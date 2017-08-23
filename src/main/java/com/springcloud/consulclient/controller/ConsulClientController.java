@@ -29,7 +29,7 @@ public class ConsulClientController {
      */
     @RequestMapping("/discover")
     public Object discover() {
-        return loadBalancer.choose("serviceName").getUri().toString();
+        return loadBalancer.choose("domain").getUri().toString();
     }
 
     /**
@@ -37,7 +37,7 @@ public class ConsulClientController {
      */
     @RequestMapping("/services")
     public Object services() {
-        List<ServiceInstance> list =  discoveryClient.getInstances("serviceName");
+        List<ServiceInstance> list =  discoveryClient.getInstances("domain");
         return list.toString();
     }
 }
